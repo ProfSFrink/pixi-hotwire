@@ -1,3 +1,5 @@
+// Getting started
+
 import { Application, Sprite, Container } from "pixi.js";
 
 const app = new Application<HTMLCanvasElement>({
@@ -18,3 +20,13 @@ const clampy: Sprite = Sprite.from("clampy.png");
 clampy.x = 100;
 clampy.y = 100;
 conty.addChild(clampy);
+
+// const conty_2: Container = new Container();
+// conty_2.x = 200;
+// conty_2.y = 200;
+// app.stage.addChild(conty_2);
+
+// const clampy_2: Sprite = Sprite.from("clampy.png");
+// clampy_2.x = 50;
+// clampy_2.y = 50;
+// conty_2.addChild(clampy_2);
