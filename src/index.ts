@@ -1,6 +1,6 @@
-// Getting started
+// BitmapText
 
-import { Application, Sprite, Container } from "pixi.js";
+import { Application, BitmapFont, BitmapText } from "pixi.js";
 
 const app = new Application<HTMLCanvasElement>({
   view: document.getElementById("pixi-canvas") as HTMLCanvasElement,
@@ -11,22 +11,24 @@ const app = new Application<HTMLCanvasElement>({
   height: 480,
 });
 
-const conty: Container = new Container();
-conty.x = 200;
-conty.y = 0;
-app.stage.addChild(conty);
+// This is the expensive part. This creates the font atlas
+BitmapFont.from("comic 32", {
+  fill: "#ffffff", // White, will be colored later
+  fontFamily: "Comic Sans MS",
+  fontSize: 32,
+});
 
-const clampy: Sprite = Sprite.from("clampy.png");
-clampy.x = 100;
-clampy.y = 100;
-conty.addChild(clampy);
+// Remeber, this font only has letters and numbers. No commas or any other symbol.
+const bitmapTexty: BitmapText = new BitmapText(
+  "I love baking, my family, and my friends",
+  {
+    fontName: "comic 32",
+    fontSize: 32, // Making it look to big or small will look bad
+    tint: 0xff0000, // Here we make it red
+  },
+);
 
-// const conty_2: Container = new Container();
-// conty_2.x = 200;
-// conty_2.y = 200;
-// app.stage.addChild(conty_2);
+bitmapTexty.text = "This is cheap";
+bitmapTexty.text = "Change it as much as you want";
 
-// const clampy_2: Sprite = Sprite.from("clampy.png");
-// clampy_2.x = 50;
-// clampy_2.y = 50;
-// conty_2.addChild(clampy_2);
+app.stage.addChild(bitmapTexty);
